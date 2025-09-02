@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitts Bowling - Reservaciones</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/reservaciones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="social-bar">
+        <a href="#" class="social-facebook">
+            <img src="iconos/facebook_1.png" alt="Facebook 1">
+            <img src="iconos/facebook_2.png" alt="Facebook 2">
+        </a>
+        <a href="#" class="social-instagram">
+            <img src="iconos/instagram_1.png" alt="Instagram 1">
+            <img src="iconos/instagram_2.png" alt="Instagram 2">
+        </a>
+        <a href="#" class="social-twitter">
+            <img src="iconos/twitter_1.png" alt="Twitter 1">
+            <img src="iconos/twitter_2.png" alt="Twitter 2">
+        </a>
+        <a href="#" class="social-chat">
+            <img src="iconos/whatsapp_1.png" alt="WhatsApp 1">
+            <img src="iconos/whatsapp_2.png" alt="WhatsApp 2">
+        </a>
+    </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="">
+                <span class="logo-text">Pitts<br>Bowling</span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="reservaciones.html" class="active">Reservaciones</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                </ul>
+            </nav>                    
+            <a href="#" class="btn btn-primary">Reservar Ahora</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="reservations-hero">
+            <video autoplay muted loop id="hero-video">
+                <source src="videos/a1.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            <div class="container">
+                <h1>Reservaciones</h1>
+                <p>Reserva tu pista y vive la mejor experiencia de bowling</p>
+            </div>
+        </section>
+        <section class="reservation-content">
+            <div class="container">
+                <div class="reservation-main-content">
+                    <div class="reservation-form-card">
+                        <h2>Hacer Reserva</h2>
+                        <div class="form-group">
+                            <label for="fecha"><i class="fas fa-calendar-alt"></i> Fecha</label>
+                            <div class="input-with-icon">
+                                <input type="text" id="fecha" placeholder="dd/mm/aaaa">
+                                <i class="fas fa-calendar-alt calendar-icon"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-clock"></i> Hora</label>
+                            <div class="time-slots">
+                                <button class="time-slot">10:00</button>
+                                <button class="time-slot">11:00</button>
+                                <button class="time-slot">12:00</button>
+                                <button class="time-slot">13:00</button>
+                                <button class="time-slot">14:00</button>
+                                <button class="time-slot">15:00</button>
+                                <button class="time-slot">16:00</button>
+                                <button class="time-slot">17:00</button>
+                                <button class="time-slot">18:00</button>
+                                <button class="time-slot">19:00</button>
+                                <button class="time-slot">20:00</button>
+                                <button class="time-slot">21:00</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-users"></i> Número de Jugadores</label>
+                            <div class="player-counter">
+                                <button class="player-btn" id="decreasePlayers">-</button>
+                                <span id="playerCount">2</span>
+                                <button class="player-btn" id="increasePlayers">+</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="duracion"><i class="fas fa-hourglass-half"></i> Duración (horas)</label>
+                            <select id="duracion">
+                                <option value="1">1 hora</option>
+                                <option value="2">2 horas</option>
+                                <option value="3">3 horas</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary btn-block reserve-button"><i class="fas fa-credit-card"></i> Reservar por <span id="totalPrice">$25</span></button>
+                    </div>
+
+                    <div class="reservation-details-column">
+                        <div class="reservation-summary-card">
+                            <h2>Resumen de Reserva</h2>
+                            <div class="summary-item">
+                                <span>Fecha:</span>
+                                <span id="summaryDate">No seleccionada</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Hora:</span>
+                                <span id="summaryTime">No seleccionada</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Jugadores:</span>
+                                <span id="summaryPlayers">2</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Duración:</span>
+                                <span id="summaryDuration">1h</span>
+                            </div>
+                            <div class="summary-total">
+                                <span>Total:</span>
+                                <span id="summaryTotal">$25</span>
+                            </div>
+                        </div>
+
+                        <div class="includes-card">
+                            <h3>Incluye</h3>
+                            <ul>
+                                <li><i class="fas fa-bowling-ball"></i> Pista premium con efectos LED</li>
+                                <li><i class="fas fa-shoe-prints"></i> Zapatos de bowling incluidos</li>
+                                <li><i class="fas fa-clipboard-list"></i> Sistema de puntuación automático</li>
+                                <li><i class="fas fa-music"></i> Música personalizada</li>
+                                <li><i class="fas fa-tags"></i> 10% descuento en comida</li>
+                                <li><i class="fas fa-camera"></i> Fotos digitales del evento</li>
+                            </ul>
+                        </div>
+
+                        <div class="help-card">
+                            <h3>¿Necesitas Ayuda?</h3>
+                            <p>Nuestro equipo está disponible para asistirte con tu reserva</p>
+                            <ul>
+                                <li><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</li>
+                                <li><i class="fas fa-envelope"></i> reservas@pittsbowling.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="membership-section">
+            <div class="container">
+                <h2 class="membership-title">Membresías</h2>
+                <p class="membership-subtitle">Únete a la familia Pitts Bowling y disfruta beneficios exclusivos</p>
+                <div class="membership-features">
+                    <div class="feature-item">
+                        <span class="icon">🎳</span>
+                        <span>Juego Premium</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">💰</span>
+                        <span>Descuentos Exclusivos</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">🎉</span>
+                        <span>Eventos VIP</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">👥</span>
+                        <span>Invitados Gratis</span>
+                    </div>
+                </div>
+                <div class="membership-plans-grid">
+                    <div class="plan-card basic">
+                        <div class="plan-icon">⚡</div>
+                        <h3>Básico</h3>
+                        <p class="plan-price">$29<span>/mes</span></p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 4 horas de juego al mes</li>
+                            <li><i class="fas fa-check"></i> 15% descuento en comida</li>
+                            <li><i class="fas fa-check"></i> Zapatos incluidos</li>
+                            <li><i class="fas fa-check"></i> Acceso días de semana</li>
+                            <li><i class="fas fa-check"></i> Sistema de puntuación digital</li>
+                        </ul>
+                        <button class="btn btn-select-plan">Seleccionar Plan</button>
+                    </div>
+                    <div class="plan-card premium popular">
+                        <div class="popular-tag">Más Popular</div>
+                        <div class="plan-icon">⭐</div>
+                        <h3>Premium</h3>
+                        <p class="plan-price">$59<span>/mes</span></p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 10 horas de juego al mes</li>
+                            <li><i class="fas fa-check"></i> 25% descuento en comida</li>
+                            <li><i class="fas fa-check"></i> Zapatos premium incluidos</li>
+                            <li><i class="fas fa-check"></i> Acceso todos los días</li>
+                            <li><i class="fas fa-check"></i> Invitados con descuento</li>
+                            <li><i class="fas fa-check"></i> Prioridad en reservas</li>
+                            <li><i class="fas fa-check"></i> Acceso a eventos exclusivos</li>
+                        </ul>
+                        <button class="btn btn-selected-plan">Seleccionar Plan</button>
+                    </div>
+                    <div class="plan-card vip">
+                        <div class="plan-icon">👑</div>
+                        <h3>VIP</h3>
+                        <p class="plan-price">$99<span>/mes</span></p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Juego ilimitado</li>
+                            <li><i class="fas fa-check"></i> 50% descuento en comida</li>
+                            <li><i class="fas fa-check"></i> Zapatos personalizados</li>
+                            <li><i class="fas fa-check"></i> Acceso 24/7</li>
+                            <li><i class="fas fa-check"></i> Hasta 4 invitados gratis</li>
+                            <li><i class="fas fa-check"></i> Pistas VIP exclusivas</li>
+                            <li><i class="fas fa-check"></i> Concierge personal</li>
+                            <li><i class="fas fa-check"></i> Eventos privados</li>
+                            <li><i class="fas fa-check"></i> Mercancía exclusiva</li>
+                        </ul>
+                        <button class="btn btn-select-plan">Seleccionar Plan</button>
+                    </div>
+                </div>
+
+                <div class="benefits-section">
+                    <h3 class="benefits-title">Beneficios de Membresía</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="icon">🏆</div>
+                            <h4>Torneos Exclusivos</h4>
+                            <p>Acceso a competencias solo para miembros con premios especiales</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="icon">🎂</div>
+                            <h4>Cumpleaños Gratis</h4>
+                            <p>Celebra tu cumpleaños con 2 horas de juego gratuito</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="icon">📱</div>
+                            <h4>App Móvil Premium</h4>
+                            <p>Funciones avanzadas y estadísticas detalladas de juego</p>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="icon">🎁</div>
+                            <h4>Regalos Mensuales</h4>
+                            <p>Sorpresas y mercancía exclusiva cada mes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="join-section">
+                    <h3 class="join-title">¡Únete Ahora!</h3>
+                    <form class="join-form">
+                        <input type="text" placeholder="Nombre completo">
+                        <input type="email" placeholder="Email">
+                        <input type="tel" placeholder="Teléfono">
+                        <input type="text" placeholder="dd/mm/aaaa">
+                        <div class="selected-plan-summary">
+                            <span>Plan Seleccionado: <strong>Premium</strong></span>
+                            <span>$59/mes</span>
+                        </div>
+                        <button type="submit" class="btn btn-join">Comenzar Membresía - $59/mes</button>
+                        <p class="disclaimer"> Sin compromiso a largo plazo. Cancela cuando quieras.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="faq-title">Preguntas Frecuentes</h2>
+                <div class="faq-content-wrapper">
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h4>¿Puedo cambiar de plan?</h4>
+                            <p>Sí, puedes cambiar tu plan en cualquier momento. Los cambios se aplican en el siguiente ciclo de facturación.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>¿Hay permanencia mínima?</h4>
+                            <p>No, todas nuestras membresías son flexibles y puedes cancelar cuando desees sin penalizaciones.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>¿Los invitados pagan?</h4>
+                            <p>Depende del plan. Los miembros Premium tienen descuentos para invitados y los VIP incluyen hasta 4 invitados gratis.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>¿Puedo usar mi membresía en otros locales?</h4>
+                            <p>Por ahora solo es válida en nuestra ubicación principal, pero estamos expandiendo la red.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-col">
+                <h3>Bolos de Pitts</h3>
+                <p>El mejor centro de bowling de la ciudad. Disfruta de una experiencia única con pistas modernas, ambiente familiar y diversión garantizada.</p><br>
+                <div class="socials">
+                    <a href="#">
+                        <img src="iconos/facebook_1.png" alt="Facebook 3">
+                        <img src="iconos/facebook_2.png" alt="Facebook 2">
+                    </a>
+                    <a href="#">
+                        <img src="iconos/instagram_1.png" alt="Instagram 3">
+                        <img src="iconos/instagram_2.png" alt="Instagram 2">
+                    </a>
+                    <a href="#">
+                        <img src="iconos/twitter_1.png" alt="Twitter 3">
+                        <img src="iconos/twitter_2.png" alt="Twitter 2">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Reservaciones</a></li>
+                    <li><a href="#">Membresías</a></li>
+                    <li><a href="#">Galería</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Nuestros Servicios</h3>
+                <ul>
+                    <li><a href="#">Pistas de Bowling</a></li>
+                    <li><a href="#">Fiestas de Cumpleaños</a></li>
+                    <li><a href="#">Eventos Corporativos</a></li>
+                    <li><a href="#">Torneos</a></li>
+                    <li><a href="#">Clases de Bowling</a></li>
+                    <li><a href="#">Alquiler de Zapatos</a></li>
+                    <li><a href="#">Comida y Bebidas</a></li>
+                    <li><a href="#">Membresías VIP</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <p>📍 123 Bowling Street, Ciudad Central, CP 12345</p><br>
+                <p>📞 (555) 123-4567</p><br>
+                <p>✉️ info@pittsbowling.com</p><br>
+                <p><strong>🕓Horarios de Atención</strong></p>
+                <p>Lunes - Viernes: 10:00 AM - 11:00 PM</p>
+                <p>Sábados: 9:00 AM - 12:00 AM</p>
+                <p>Domingos: 10:00 AM - 10:00 PM</p>
+                <p>Feriados: 12:00 p. m. - 8:00 p. m.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p>© Pitts Bowling 2025. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Servicio</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="developers-section" id="developers-section">
+        <button class="developers-toggle">
+            < > Desarrolladores <span class="arrow">^</span>
+        </button>
+        <div class="developers-info">
+            <div class="container">
+                <div class="dev-header">
+                    <h3 id="dev-team-title">< > Equipo de Desarrollo</h3>
+                </div>
+                <div class="dev-cards">
+                    <div class="dev-card">
+                        <h4>Eduardo Flores</h4>
+                        <p>Desarrollador Backend</p>
+                        <p>✉️ wittysoftt@gmail.com</p>
+                    </div>
+                    <div class="dev-card">
+                        <h4>Randy Rodríguez</h4>
+                        <p>Diseñador UI/UX</p>
+                        <p>Desarrollador Full Stack</p>
+                        <p>✉️ wittysoftt@gmail.com</p>
+                    </div>
+                    <div class="dev-card">
+                        <h4>Freddy Valbuena</h4>
+                        <p>Desarrollador en Frontend</p>
+                        <p>✉️ wittysoftt@gmail.com</p>
+                    </div>
+                </div>
+                <div class="dev-footer">
+                    <p>¿Necesitas un sitio web profesional? Contáctanos para tu próximo proyecto.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-buttons">
+        <a href="#" class="fab chat-fab">
+            <img src="gifs/Saludando.gif" alt="Chat" />
+        </a>
+        <a href="#" id="scrollToTopBtn" class="fab scroll-top-fab">↑</a>
+    </div>
+
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <img src="gifs/Saludando.gif" alt="Lia" class="avatar">
+            <h4>CHATEA CON FABI</h4>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                <img src="gifs/Hablando.gif" alt="FABI" class="avatar">
+                <p>¡Hola! Soy FABI la asistente de Pitts Bowling. ¿En qué puedo ayudarte?</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
+            <button id="chatSendBtn">Enviar</button>
+        </div>
+    </div>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/general.js"></script>
+    <script src="js/reservations.js"></script>
+</body>
+</html>

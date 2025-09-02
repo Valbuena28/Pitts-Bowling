@@ -1,0 +1,537 @@
+/* Estilos generales para la página del blog */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilos para la página de detalle del post */
+.post-detail-section {
+    padding: 60px 20px;
+}
+.post-detail-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(31, 31, 31, 0.7);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+}
+.post-detail-section {
+    position: relative; /* Añadido para que el botón "Volver" se posicione en relación a esta sección */
+    padding: 60px 20px;
+}
+.back-to-blog-btn {
+    position: absolute; /* Cambiado a absolute para que esté dentro del flujo del documento pero posicionado */
+    top: 60px; /* Ajustado para que esté a la altura del padding superior del contenedor */
+    left: 20px; /* Ajustado para que esté a la altura del padding izquierdo del contenedor */
+    background: #facc15;
+    color: #121212;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+.post-detail-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+.post-detail-content .author-info {
+    margin-bottom: 30px;
+}
+.post-detail-content img.main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+.post-detail-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.event-call-to-action {
+    background-color: #f0e6d2; /* Fondo beige */
+    color: #121212; /* Color de texto oscuro para contraste */
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 30px; /* Espacio antes del carrusel */
+}
+
+.call-to-action-section {
+    background-color: #f0e6d2; /* Fondo beige */
+    padding: 40px 20px; /* Padding para que ocupe todo el espacio */
+    text-align: center;
+    margin-top: 40px; /* Espacio superior */
+    margin-bottom: 40px; /* Espacio inferior */
+}
+
+.event-call-to-action {
+    color: #121212; /* Color de texto oscuro para contraste */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0; /* Eliminar márgenes por defecto del h2 */
+}
+
+/* Estilos para el carrusel de imágenes */
+.image-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    height: 300px; /* Altura fija para el carrusel */
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que las imágenes cubran el área */
+    flex-shrink: 0;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #facc15;
+}
+
+.blog-page .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Encabezado del Blog */
+.blog-hero {
+    padding: 60px 0;
+    text-align: center; /* Centrado */
+}
+
+.blog-hero .container {
+    display: flex;
+    flex-direction: column; /* Apilado vertical */
+    align-items: center; /* Centrado horizontal */
+    gap: 20px;
+}
+
+.blog-title h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.blog-title p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center; /* Centrado */
+}
+
+.filter-btn {
+    background: rgba(42, 42, 42, 0.8);
+    border: 1px solid #444;
+    color: #e0e0e0;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #facc15;
+    color: #121212;
+    border-color: #facc15;
+}
+
+/* Contenido del Blog */
+.blog-content .container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Publicación Destacada */
+a.featured-post,
+a.post-link {
+    text-decoration: none;
+    color: inherit; /* Asegura que el color del texto sea heredado */
+}
+
+.featured-post {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: rgba(31, 31, 31, 0.7);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.featured-post-emoji {
+    font-size: 150px;
+    flex-shrink: 0; /* Evita que el emoji se encoja */
+}
+
+.featured-post-content {
+    flex-grow: 1;
+}
+
+.featured-post-content .tag {
+    background: #facc15;
+    color: #121212;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.featured-post-content .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #b0b0b0;
+}
+
+.featured-post-content h2,
+.post-card-content h3 {
+    color: #ffffff !important; /* Asegura que el color del texto sea blanco */
+    text-decoration: none !important; /* Asegura que no haya subrayado */
+}
+
+.featured-post-content h2,
+.post-card-content h3 {
+    color: #ffffff; /* Asegura que el color del texto sea blanco */
+    text-decoration: none; /* Asegura que no haya subrayado */
+}
+
+.featured-post-content h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.featured-post-content p {
+    color: #b0b0b0;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.author-info {
+    display: flex;
+    gap: 20px;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.blog-page .btn-primary {
+    background-color: #facc15;
+    color: #121212;
+    font-weight: bold;
+    padding: 15px 35px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.blog-page .btn-primary:hover {
+    transform: scale(1.05);
+}
+
+/* Cuadrícula de Publicaciones */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 30px;
+}
+
+.post-card {
+    background: rgba(31, 31, 31, 0.7);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    cursor: pointer; /* Añadido para indicar que es clicable */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: inherit; /* Hereda el color del texto */
+}
+
+.post-card:hover {
+    transform: translateY(-5px); /* Efecto al pasar el ratón */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.post-card-emoji {
+    font-size: 120px; /* Iconos más grandes */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.post-card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.post-card-content .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #b0b0b0;
+    font-size: 0.8rem;
+}
+
+.post-card-content .tag {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.tag-pink { background-color: #e91e63; }
+.tag-green { background-color: #4caf50; }
+.tag-red { background-color: #f44336; }
+.tag-yellow { background-color: #ffc107; }
+.tag-purple { background-color: #673ab7; } /* Cambiado a un morado más oscuro */
+.tag-blue { background-color: #2196f3; }
+
+
+.post-card-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.post-card-content p {
+    color: #b0b0b0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.post-card-content .author-info {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+/* Archivo */
+.archive {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.archive .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.archive h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.archive-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.archive-links a {
+    background: rgba(42, 42, 42, 0.8);
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #444;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.archive-links a:hover {
+    background: #facc15;
+    color: #121212;
+    border-color: #facc15;
+}
+
+/* Newsletter */
+.newsletter {
+    background: #f0e6d2; /* Fondo beige */
+    padding: 60px 20px; /* Padding para el full-bleed */
+    width: 100%;
+}
+
+.newsletter-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.newsletter-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #121212;
+    font-weight: 800;
+}
+
+.newsletter-content p {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.newsletter-content form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto 15px;
+}
+
+.newsletter-content input {
+    flex-grow: 1;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    background: rgba(255, 255, 255, 0.5);
+    color: #121212;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.newsletter-content input::placeholder {
+    color: #555;
+}
+
+.newsletter-content .btn {
+    padding: 15px 30px;
+    border-radius: 10px;
+}
+
+.spam-notice {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+    .featured-post {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+    .featured-post-content h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Estilos para el carrusel de imágenes */
+.image-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-item img {
+    width: 100%;
+    border-radius: 15px;
+    display: block;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #facc15;
+}
