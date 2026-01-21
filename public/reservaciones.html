@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/pitss.jpg" type="image/x-icon">
+    <title>Pitts Bowling - Reservaciones</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/reservaciones.css">
+    <link rel="stylesheet" href="css/modal-carrito.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.jpg" alt="">
+                <span class="logo-text">Pitts<br>Bowling</span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="reservaciones.html" class="active">Reservaciones</a></li>
+                    <li><a href="/Menu/menu.html">Menu</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div id="auth-container" class="auth-container">
+                    <div id="guest-view" class="auth-view hidden">
+                        <a href="login.html" class="btn-auth btn-login">Iniciar Sesión</a>
+                        <a href="register.html" class="btn-auth btn-register">Registrarse</a>
+                    </div>
+
+                    <div id="user-view" class="auth-view hidden">
+                        <div class="user-avatar-container" id="avatarBtn">
+                            <div class="user-avatar" id="userInitial">U</div>
+                        </div>
+                        <div class="dropdown-menu hidden" id="userDropdown">
+                            <div class="dropdown-header">
+                                <span id="dropdownUser">Usuario</span>
+                            </div>
+                            <ul>
+                                <li><a href="dasboard.html">📊 Dashboard</a></li>
+                                <li><a href="perfil.html">⚙️ Configuración</a></li>
+                                <li><a href="#" id="headerLogoutBtn" class="logout-item">🚪 Cerrar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-icons-header">
+                    <a href="#" class="social-facebook"><img src="iconos/facebook_1.png" alt="Facebook"></a>
+                    <a href="#" class="social-instagram"><img src="iconos/instagram_1.png" alt="Instagram"></a>
+                    <a href="#" class="social-twitter"><img src="iconos/twitter_1.png" alt="Twitter"></a>
+                    <a href="#" class="social-chat"><img src="iconos/whatsapp_1.png" alt="WhatsApp"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="reservations-hero">
+            <video autoplay muted loop id="hero-video">
+                <source src="videos/a1.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            <div class="container">
+                <h1>Reservaciones</h1>
+                <p>Reserva tu pista y vive la mejor experiencia de bowling</p>
+            </div>
+        </section>
+        <section class="reservation-content">
+            <div class="container">
+                <div class="reservation-main-content">
+                    <div class="reservation-form-card" id="hacer-reserva">
+                        <h2>Hacer Reserva</h2>
+
+                        <input type="hidden" id="selectedTime" value="">
+
+                        <div class="form-group">
+                            <label for="fecha"><i class="fas fa-calendar-alt"></i> Fecha</label>
+                            <div class="input-with-icon" style="display:flex; gap:10px;">
+                                <input type="date" id="fecha" class="form-control" style="flex:1; margin-right:10px;">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-clock"></i> Hora de Inicio</label>
+                            <div class="time-slots" id="timeSlotsContainer">
+                                <button class="time-slot" data-time="16:00">16:00</button>
+                                <button class="time-slot" data-time="17:00">17:00</button>
+                                <button class="time-slot" data-time="18:00">18:00</button>
+                                <button class="time-slot" data-time="19:00">19:00</button>
+                                <button class="time-slot" data-time="20:00">20:00</button>
+                                <button class="time-slot" data-time="21:00">21:00</button>
+                                <button class="time-slot" data-time="22:00">22:00</button>
+                                <button class="time-slot" data-time="23:00">23:00</button>
+                            </div>
+                            <small id="timeError" style="color:red; display:none;">Selecciona una hora</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-users"></i> Número de Jugadores</label>
+                            <div class="player-counter">
+                                <button class="player-btn" id="decreasePlayers">-</button>
+                                <span id="playerCount">2</span>
+                                <button class="player-btn" id="increasePlayers">+</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="shoe-sizes-wrapper">
+                            <label><i class="fas fa-shoe-prints"></i> Tallas de Zapatos</label>
+                            <div id="shoe-sizes-inputs">
+                            </div>
+                            <small class="text-muted" style="font-size: 0.8em; color: #666;">Indica la talla de cada
+                                jugador.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="duracion"><i class="fas fa-hourglass-half"></i> Duración</label>
+                            <select id="duracion">
+                                <option value="1" data-price="10">1 hora ($10)</option>
+                                <option value="2" data-price="18">2 horas ($18)</option>
+                                <option value="3" data-price="25" selected>3 horas ($25) - Básico</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="laneSelectionContainer" style="opacity: 0.5; pointer-events: none;">
+                            <label for="laneSelect"><i class="fas fa-bowling-ball"></i> Pista</label>
+                            <select id="laneSelect" class="form-control" disabled>
+                                <option value="">-- Selecciona Fecha y Hora primero --</option>
+                            </select>
+                            <small class="text-muted">Mostrando pistas disponibles en tiempo real.</small>
+                        </div>
+
+                        <button id="btnCheckAndReserve" class="btn btn-primary btn-block reserve-button">
+                            <i class="fas fa-check-circle"></i> Verificar y Reservar
+                        </button>
+                    </div>
+
+                    <div class="reservation-details-column">
+                        <div class="reservation-summary-card">
+                            <h2>Resumen de Reserva</h2>
+                            <div class="summary-item">
+                                <span>Fecha:</span>
+                                <span id="summaryDate">No seleccionada</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Hora:</span>
+                                <span id="summaryTime">No seleccionada</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Jugadores:</span>
+                                <span id="summaryPlayers">2</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Duración:</span>
+                                <span id="summaryDuration">1h</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Pista:</span>
+                                <span id="summaryLane">No seleccionada</span>
+                            </div>
+                            <div class="summary-total">
+                                <span>Total:</span>
+                                <span id="summaryTotal">$25</span>
+                            </div>
+                        </div>
+
+                        <div class="includes-card">
+                            <h3>Incluye</h3>
+                            <ul>
+                                <li><i class="fas fa-bowling-ball"></i> Pista premium con efectos LED</li>
+                                <li><i class="fas fa-shoe-prints"></i> Zapatos de bowling incluidos</li>
+                                <li><i class="fas fa-clipboard-list"></i> Sistema de puntuación automático</li>
+                                <li><i class="fas fa-music"></i> Música personalizada</li>
+                                <li><i class="fas fa-tags"></i> 10% descuento en comida</li>
+                                <li><i class="fas fa-camera"></i> Fotos digitales del evento</li>
+                            </ul>
+                        </div>
+
+                        <div class="help-card">
+                            <h3>¿Necesitas Ayuda?</h3>
+                            <p>Nuestro equipo está disponible para asistirte con tu reserva</p>
+                            <ul>
+                                <li><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</li>
+                                <li><i class="fas fa-envelope"></i> reservas@pittsbowling.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <div class="container">
+                <h2>Elige tu Paquete Perfecto</h2>
+                <h4>Tenemos opciones para todos los gustos y presupuestos.<br>¡Reserva ahora y vive la experiencia!</h4>
+                <div class="pricing-plans" id="pricing-container">
+                    <p>Cargando paquetes...</p>
+                </div>
+            </div>
+        </section>
+
+        <div id="modal-paquete" class="detalle hidden">
+
+
+            <div class="detalle-contenido" id="modal-paquete-fase1">
+                <h2 id="paquete-nombre">Nombre del Paquete</h2>
+                <div id="paquete-detalles"></div>
+
+                <div class="form-group">
+                    <label for="paquete-fecha">Fecha:</label>
+                    <input type="date" id="paquete-fecha" name="paquete-fecha" min="2025-11-19">
+                </div>
+
+                <div class="form-group">
+                    <label for="paquete-hora">Hora de Inicio:</label>
+                    <input type="time" id="paquete-hora" name="paquete-hora" min="10:00" max="23:00">
+                </div>
+
+                <div class="form-group">
+                    <label for="paquete-personas">N° Personas:</label>
+                    <input type="number" id="paquete-personas" name="paquete-personas" min="1" value="1">
+                    <small id="max-personas-msg" style="color: #666; font-size: 0.8em;"></small>
+                </div>
+
+                <div class="form-group">
+                    <label style="display:block; margin-bottom:5px;">👟 Tallas de Zapatos:</label>
+                    <div id="paquete-tallas-container">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="paquete-pista">Pista:</label>
+                    <select id="paquete-pista" name="paquete-pista" disabled>
+                        <option value="">-- Selecciona Fecha y Hora primero --</option>
+                    </select>
+                </div>
+
+                <h3 id="paquete-precio">Precio: $00.00</h3>
+
+                <div class="detalle-acciones">
+                    <button id="btn-reservar-paquete" class="btn-agregar">Confirmar Pedido</button>
+                </div>
+                <button id="cerrar-modal-paquete" class="cerrar-btn">✕</button>
+            </div>
+
+            <div class="detalle-contenido hidden" id="modal-paquete-fase2">
+                <h2>Reserva Pendiente</h2>
+                <p>La reserva está pendiente por pago, verifica tu carrito.</p>
+                <button id="cerrar-modal-confirmacion" class="btn-agregar">Aceptar</button>
+            </div>
+        </div>
+
+        <section id="detalle-carrito" class="detalle hidden">
+            <div class="detalle-contenido">
+                <h2>Tu Pedido</h2>
+                <div id="lista-carrito"></div>
+                <div class="detalle-acciones">
+                    <button id="confirmar-pedido" class="btn-agregar">Confirmar pedido</button>
+                    <button id="cerrar-carrito" class="cerrar-btn">✕</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="modal-factura" class="detalle hidden">
+            <div class="detalle-contenido">
+                <h2>Resumen de tu Pedido</h2>
+                <div id="factura-items" class="factura-items-container">
+                </div>
+                <h3 id="factura-total" class="factura-total">Total: $0.00</h3>
+                <div class="detalle-acciones">
+                    <button id="btn-pagar" class="btn-agregar">Pagar</button>
+                </div>
+                <button id="cerrar-modal-factura" class="cerrar-btn">✕</button>
+            </div>
+        </div>
+
+        <div id="modal-metodo-pago" class="detalle hidden">
+            <div class="detalle-contenido">
+                <h2>Elige un Método de Pago</h2>
+                <div class="detalle-acciones metodos-pago">
+                    <button id="btn-ir-pago-movil" class="btn-metodo-pago">Pago Móvil</button>
+                    <button id="btn-ir-transferencia" class="btn-metodo-pago">Transferencia Bancaria</button>
+                </div>
+                <button id="cerrar-modal-metodo" class="cerrar-btn">✕</button>
+            </div>
+        </div>
+
+        <!-- Modal Mapa Delivery -->
+        <div id="modal-delivery-map" class="detalle hidden">
+            <div class="detalle-contenido detalle-contenido-pago">
+                <h2>Ubicación de Entrega</h2>
+                <p class="desc-text">Confirma tu ubicación exacta.</p>
+
+                <!-- WRAPPER CON SCROLL (Mapa + Controles) -->
+                <div id="map-scroll-wrapper" class="pago-body-scroll">
+                    <div id="map-controls" style="margin-bottom:10px;">
+                        <button id="btn-geo-nav" class="btn-agregar">Usar mi ubicación actual</button>
+                    </div>
+
+                    <div id="mapa-delivery"></div>
+                </div>
+
+                <!-- FOOTER FIJO (Info + Botones) -->
+                <div class="detalle-acciones" style="flex-direction: column; gap: 10px; margin-top: 10px;">
+                    <div id="delivery-info-container" class="hidden" style="width: 100%;">
+                        <div class="delivery-compact-info">
+                            <p class="delivery-dist-text">Dist: <span id="del-distancia">0</span> km</p>
+                            <p class="delivery-cost-text">Envío: <strong>$<span id="del-costo">0.00</span></strong></p>
+                        </div>
+                        <p id="del-status-text"></p>
+                        <button id="btn-confirmar-delivery" class="btn-agregar" style="width: 100%;">Confirmar y
+                            Pagar</button>
+                    </div>
+
+                    <div class="map-footer-wrapper" style="text-align: center;">
+                        <button id="cerrar-modal-mapa" class="cerrar-btn-footer">✕</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-tipo-servicio" class="detalle hidden">
+            <div class="detalle-contenido">
+                <h2>¿Cómo deseas tu pedido?</h2>
+                <div class="detalle-acciones metodos-pago">
+                    <button id="btn-servicio-local" class="btn-metodo-pago">Comer Aquí / Para Llevar</button>
+                    <button id="btn-servicio-delivery" class="btn-metodo-pago">Delivery</button>
+                </div>
+                <button id="cerrar-modal-servicio" class="cerrar-btn">✕</button>
+            </div>
+        </div>
+
+        <div id="modal-pago-movil" class="detalle hidden">
+            <div class="detalle-contenido">
+                <h2>Datos para Pago Móvil</h2>
+                <div class="datos-pago">
+                    <p><strong>Cédula:</strong> 27263686</p>
+                    <p><strong>Teléfono:</strong> 0424-6117224</p>
+                    <p><strong>Banco:</strong> Venezuela</p>
+                </div>
+                <div class="form-group">
+                    <label for="pago-movil-ref">Referencia del Pago:</label>
+                    <input type="text" id="pago-movil-ref" placeholder="Introduce el N° de referencia">
+                </div>
+                <div class="form-group">
+                    <label for="pago-movil-capture">Capture del Pago:</label>
+                    <input type="file" id="pago-movil-capture" accept="image/*">
+                    <h3 class="modal-total-display" id="pm-total-display"> Total a Pagar: $0.00 </h3>
+                </div>
+                <div class="detalle-acciones">
+                    <button id="btn-submit-pago-movil" class="btn-agregar">Ya Pagué</button>
+                </div>
+                <button id="cerrar-modal-pago-movil" class="cerrar-btn">✕</button>
+            </div>
+        </div>
+
+        <div id="modal-transferencia" class="detalle hidden">
+            <div class="detalle-contenido">
+                <h2>Datos para Transferencia</h2>
+                <div class="datos-pago">
+                    <p><strong>Empresa:</strong> PITTS BOWLIN</p>
+                    <p><strong>RIF:</strong> J272636866</p>
+                    <p><strong>Banco:</strong> Venezuela</p>
+                    <p><strong>Cuenta:</strong> 01020329580000990411</p>
+                </div>
+                <div class="form-group">
+                    <label for="transfer-ref">Referencia del Pago:</label>
+                    <input type="text" id="transfer-ref" placeholder="Introduce el N° de referencia">
+                </div>
+                <div class="form-group">
+                    <label for="transfer-capture">Capture del Pago:</label>
+                    <input type="file" id="transfer-capture" accept="image/*">
+                    <h3 class="modal-total-display" id="trans-total-display">Total a Pagar: $0.00</h3>
+                </div>
+                <div class="detalle-acciones">
+                    <button id="btn-submit-transfer" class="btn-agregar">Ya Pagué</button>
+                </div>
+                <button id="cerrar-modal-transfer" class="cerrar-btn">✕</button>
+            </div>
+        </div>
+
+        <div id="modal-verificacion" class="detalle hidden">
+            <div class="detalle-contenido">
+                <h2>Pago en Proceso</h2>
+                <p>Tu pago se está verificando, le notificaremos al verificarse. ¡Esté atento!</p>
+                <button id="cerrar-modal-verificacion" class="btn-agregar">Aceptar</button>
+            </div>
+        </div>
+        </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="faq-title">Preguntas Frecuentes</h2>
+                <div class="faq-content-wrapper">
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h4>¿Puedo cambiar de plan?</h4>
+                            <p>Sí, puedes cambiar tu plan en cualquier momento. Los cambios se aplican en el siguiente
+                                ciclo de facturación.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>¿Hay permanencia mínima?</h4>
+                            <p>No, todas nuestras membresías son flexibles y puedes cancelar cuando desees sin
+                                penalizaciones.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>¿Los invitados pagan?</h4>
+                            <p>Depende del plan. Los miembros Premium tienen descuentos para invitados y los VIP
+                                incluyen hasta 4 invitados gratis.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>¿Puedo usar mi membresía en otros locales?</h4>
+                            <p>Por ahora solo es válida en nuestra ubicación principal, pero estamos expandiendo la red.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-col">
+                <h3>Bolos de Pitts</h3>
+                <p>El mejor centro de bowling de la ciudad. Disfruta de una experiencia única con pistas modernas,
+                    ambiente familiar y diversión garantizada.</p><br>
+                <div class="socials">
+                    <a href="#">
+                        <img src="iconos/facebook_1.png" alt="Facebook 3">
+                        <img src="iconos/facebook_2.png" alt="Facebook 2">
+                    </a>
+                    <a href="#">
+                        <img src="iconos/instagram_1.png" alt="Instagram 3">
+                        <img src="iconos/instagram_2.png" alt="Instagram 2">
+                    </a>
+                    <a href="#">
+                        <img src="iconos/twitter_1.png" alt="Twitter 3">
+                        <img src="iconos/twitter_2.png" alt="Twitter 2">
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="reservaciones.html">Reservaciones</a></li>
+                    <li><a href="/Menu/menu.html">Menu</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Nuestros Servicios</h3>
+                <ul>
+                    <li>Pistas de Bowling</li>
+                    <li>Fiestas de Cumpleaños</li>
+                    <li>Eventos Corporativos</li>
+                    <li>Torneos</li>
+                    <li>Clases de Bowling</li>
+                    <li>Alquiler de Zapatos</li>
+                    <li>Comida y Bebidas</li>
+                    <li>Membresías VIP</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <p>📍 123 Bowling Street, Ciudad Central, CP 12345</p><br>
+                <p>📞 (555) 123-4567</p><br>
+                <p>✉️ info@pittsbowling.com</p><br>
+                <p><strong>🕓Horarios de Atención</strong></p>
+                <p>Lunes - Viernes: 10:00 AM - 11:00 PM</p>
+                <p>Sábados: 9:00 AM - 12:00 AM</p>
+                <p>Domingos: 10:00 AM - 10:00 PM</p>
+                <p>Feriados: 12:00 p. m. - 8:00 p. m.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p>© Pitts Bowling 2025. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="politica-privacidad.html">Política de Privacidad</a>
+                <a href="terminos-servicio.html">Términos de Servicio</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="developers-section" id="developers-section">
+        <button class="developers-toggle">
+            <> Desarrolladores <span class="arrow">^</span>
+        </button>
+        <div class="developers-info">
+            <div class="container">
+                <div class="dev-header">
+                    <h3 id="dev-team-title">
+                        <> Equipo de Desarrollo
+                    </h3>
+                </div>
+                <div class="dev-cards">
+                    <div class="dev-card">
+                        <h4>Eduardo Flores</h4>
+                        <p>Desarrollador Backend</p>
+                        <p>✉️ wittysoftt@gmail.com</p>
+                    </div>
+                    <div class="dev-card">
+                        <h4>Randy Rodríguez</h4>
+                        <p>Diseñador UI/UX</p>
+                        <p>Desarrollador Full Stack</p>
+                        <p>✉️ wittysoftt@gmail.com</p>
+                    </div>
+                    <div class="dev-card">
+                        <h4>Freddy Valbuena</h4>
+                        <p>Desarrollador en Frontend</p>
+                        <p>✉️ wittysoftt@gmail.com</p>
+                    </div>
+                </div>
+                <div class="dev-footer">
+                    <p>¿Necesitas un sitio web profesional? Contáctanos para tu próximo proyecto.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-buttons">
+        <a href="#" class="fab chat-fab">
+            <img src="gifs/Saludando.gif" alt="Chat" />
+        </a>
+        <a href="#" id="carrito-flotante" class="fab carrito-flotante-btn hidden">
+            <span id="carrito-count">0</span> 🛒
+        </a>
+        <a href="#" id="scrollToTopBtn" class="fab scroll-top-fab">↑</a>
+    </div>
+
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <img src="gifs/Saludando.gif" alt="Lia" class="avatar">
+            <h4>CHATEA CON FABI</h4>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                <img src="gifs/Hablando.gif" alt="FABI" class="avatar">
+                <p>¡Hola! Soy FABI la asistente de Pitts Bowling. ¿En qué puedo ayudarte?</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
+            <button id="chatSendBtn">Enviar</button>
+        </div>
+    </div>
+
+
+    <!-- Leaflet para Delivery -->
+    <link rel="stylesheet" href="lib/leaflet.css" />
+    <script src="lib/leaflet.js"></script>
+
+    <!-- Scripts -->
+    <script src="js/carrito-modal.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/general.js"></script>
+    <script src="js/loadPackages.js"></script>
+    <script src="js/reservations.js"></script>
+    <script src="js/header-auth.js"></script>
+</body>
+
+</html>

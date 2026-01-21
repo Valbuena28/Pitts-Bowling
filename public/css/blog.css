@@ -1,0 +1,619 @@
+/* Estilos generales para la página del blog */
+body {
+    background-color: #1C211B; /* Dark black from palette */
+    color: #F5F4E7; /* Cream white from palette */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
+    display: flex;
+    flex-direction: column;
+}
+
+.social-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Espacio entre los iconos */
+    background-color: rgba(28, 33, 27, 0.9); /* Fondo oscuro semitransparente */
+    padding: 10px 0;
+    z-index: 1002; /* Mayor que el header para que esté encima */
+}
+
+.social-bar a {
+    width: 40px; /* Tamaño de los iconos */
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.social-bar a:hover {
+    transform: scale(1.1);
+}
+
+.social-bar a img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+.social-bar a img:last-child {
+    opacity: 0; /* La segunda imagen oculta por defecto */
+}
+
+.social-bar a:hover img:first-child {
+    opacity: 0; /* La primera imagen se oculta al hacer hover */
+}
+
+.social-bar a:hover img:last-child {
+    opacity: 1; /* La segunda imagen se muestra al hacer hover */
+}
+
+/* Estilos para la página de detalle del post */
+.post-detail-section {
+    padding: 60px 20px;
+    position: relative; /* Reintroducido para posicionar el botón "Volver" */
+}
+.post-detail-content {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: rgba(28, 33, 27, 0.6); /* Dark black from palette */
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(245, 244, 231, 0.1); /* Cream white from palette */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra inicial para profundidad */
+    position: relative;
+}
+.back-to-blog-btn {
+    position: absolute;
+    top: 20px; /* Ajustado para que esté más cerca del borde superior de la sección */
+    left: 20px; /* Ajustado para que esté más cerca del borde izquierdo de la sección */
+    /* Eliminado transform: translateX(-450px); */
+    background-color: #7C6447; /* Dark brown from palette */
+    color: #F5F4E7; /* Cream white from palette */
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+.post-detail-content h1 {
+    font-size: 3rem;
+    margin-bottom: 25px; /* Aumentar separación */
+}
+.post-detail-content .author-info {
+    margin-bottom: 40px; /* Aumentar separación */
+}
+.post-detail-content img.main-image {
+    width: 100%;
+    height: 360px; /* Tamaño promedio controlado */
+    object-fit: cover; /* Recorte elegante */
+    border-radius: 15px;
+    margin-bottom: 40px;
+}
+
+/* Imágenes dentro del contenido del post */
+.post-detail-content #post-content img {
+    display: block;
+    max-width: 720px; /* Ancho máximo uniforme */
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 0 auto 20px;
+}
+
+@media (max-width: 768px) {
+  .post-detail-content img.main-image {
+    height: 220px;
+  }
+}
+.post-detail-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px; /* Aumentar separación */
+}
+
+.event-call-to-action {
+    background-color: #E0CEAC; /* Light beige from palette */
+    color: #1C211B; /* Dark black from palette */
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 30px; /* Espacio antes del carrusel */
+}
+
+.call-to-action-section {
+    background-color: #E0CEAC; /* Light beige from palette */
+    padding: 40px 20px; /* Padding para que ocupe todo el espacio */
+    text-align: center;
+    margin-top: 40px; /* Espacio superior */
+    margin-bottom: 40px; /* Espacio inferior */
+}
+
+.event-call-to-action {
+    color: #1C211B; /* Dark black from palette */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0; /* Eliminar márgenes por defecto del h2 */
+}
+
+/* Estilos para el carrusel de imágenes */
+
+.image-carousel {
+    position: relative;
+    width: 100%;
+    height: 320px; /* Altura consistente */
+    overflow: hidden; /* Evita fugas/miniaturas */
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.carousel-item {
+    min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 768px) {
+  .image-carousel {
+    height: 220px;
+  }
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(245, 244, 231, 0.5); /* Cream white from palette with transparency */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #7C6447; /* Dark brown from palette */
+}
+
+.blog-page {
+    flex-grow: 1; /* Permite que el main ocupe el espacio disponible */
+}
+
+.blog-page .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Encabezado del Blog */
+.blog-hero {
+    padding: 80px 0; /* Aumentar el padding superior e inferior */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blog-hero .container {
+    display: flex;
+    flex-direction: column; /* Apilado vertical */
+    align-items: center; /* Centrado horizontal */
+    gap: 20px;
+    max-width: 900px; /* Limita el ancho para que pueda ser centrado */
+    margin: 0 auto; /* Centra el contenedor */
+}
+
+.blog-title {
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    text-align: center; /* Centra el texto dentro del título del blog */
+}
+
+.blog-title h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.blog-title p {
+    font-size: 1.1rem;
+    color: #F5F4E7; /* Cream white from palette */
+    margin-top: 10px;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center; /* Centrado */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+.filter-btn {
+    background-color: rgba(28, 33, 27, 0.8); /* Dark black from palette with transparency */
+    border: 1px solid rgba(245, 244, 231, 0.2); /* Cream white from palette with transparency */
+    color: #F5F4E7; /* Cream white from palette */
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background-color: #7C6447; /* Dark brown from palette */
+    color: #F5F4E7; /* Cream white from palette */
+    border-color: #7C6447; /* Dark brown from palette */
+}
+
+/* Contenido del Blog */
+.blog-content {
+    padding: 60px 0; /* Ajustar padding para consistencia */
+    flex-grow: 1;
+}
+
+.blog-content .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos hijos horizontalmente */
+    gap: 40px;
+    max-width: 900px; /* Limita el ancho para que pueda ser centrado */
+    margin: 0 auto; /* Centra el contenedor */
+}
+
+/* Publicación Destacada */
+a.featured-post,
+a.post-link {
+    text-decoration: none;
+    color: inherit; /* Asegura que el color del texto sea heredado */
+}
+
+.featured-post {
+    display: flex;
+    flex-direction: row; /* Asegura que los elementos estén en fila */
+    align-items: center;
+    gap: 40px;
+    background-color: rgba(28, 33, 27, 0.6); /* Dark black from palette */
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(245, 244, 231, 0.1); /* Cream white from palette */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra inicial para profundidad */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto 40px; /* Añadir margin-bottom para separar del grid */
+}
+
+.featured-post-icon {
+    font-size: 4rem; /* Tamaño de fuente ajustado */
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px; /* Ancho ajustado */
+    height: 100px; /* Altura ajustada */
+    background-color: #7C6447; /* Color de fondo para el icono */
+    border-radius: 50%; /* Forma circular */
+    color: #F5F4E7; /* Color del icono */
+}
+
+
+
+.featured-post-content {
+    flex-grow: 1;
+}
+
+.featured-post-content .tag {
+    background: #7C6447; /* Dark brown from palette */
+    color: #F5F4E7; /* Cream white from palette */
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.featured-post-content .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #E0CEAC; /* Light beige from palette */
+}
+
+.featured-post-content h2,
+.post-card-content h3 {
+    color: #F5F4E7 !important; /* Cream white from palette */
+    text-decoration: none !important; /* Asegura que no haya subrayado */
+}
+
+.featured-post-content h2,
+.post-card-content h3 {
+    color: #F5F4E7; /* Cream white from palette */
+    text-decoration: none; /* Asegura que no haya subrayado */
+}
+
+.featured-post-content h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.featured-post-content p {
+    color: #E0CEAC; /* Light beige from palette */
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.author-info {
+    display: flex;
+    gap: 20px;
+    color: #E0CEAC; /* Light beige from palette */
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.blog-page .btn-primary {
+    background-color: #7C6447; /* Dark brown from palette */
+    color: #F5F4E7; /* Cream white from palette */
+    font-weight: bold;
+    padding: 15px 35px;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.blog-page .btn-primary:hover {
+    transform: scale(1.05);
+}
+
+/* Cuadrícula de Publicaciones */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 30px;
+    max-width: 900px; /* Limita el ancho para que pueda ser centrado */
+    width: 100%; /* Asegura que ocupe el ancho disponible hasta el max-width */
+    margin: 0 auto; /* Centra el grid */
+}
+
+.post-card {
+    background-color: rgba(28, 33, 27, 0.6); /* Dark black from palette */
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(245, 244, 231, 0.1); /* Cream white from palette */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra inicial para profundidad */
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    cursor: pointer; /* Añadido para indicar que es clicable */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: inherit; /* Hereda el color del texto */
+}
+
+.post-card:hover {
+    transform: translateY(-5px); /* Efecto al pasar el ratón */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.post-card-emoji {
+    font-size: 120px; /* Iconos más grandes */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.post-card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.post-card-content .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #E0CEAC; /* Light beige from palette */
+    font-size: 0.8rem;
+}
+
+.post-card-content .tag {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #F5F4E7; /* Cream white from palette */
+}
+
+.tag-pink { background-color: #E0CEAC; color: #1C211B; } /* Light beige, Dark black text */
+.tag-green { background-color: #7C6447; color: #F5F4E7; } /* Dark brown, Cream white text */
+.tag-red { background-color: #1C211B; color: #F5F4E7; } /* Dark black, Cream white text */
+.tag-yellow { background-color: #F5F4E7; color: #1C211B; } /* Cream white, Dark black text */
+.tag-purple { background-color: #0C0C0C; color: #F5F4E7; } /* Pure black, Cream white text */
+.tag-blue { background-color: #7C6447; color: #F5F4E7; } /* Dark brown, Cream white text */
+
+
+.post-card-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #F5F4E7; /* Cream white from palette */
+}
+
+.post-card-content p {
+    color: #E0CEAC; /* Light beige from palette */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.post-card-content .author-info {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+/* Archivo */
+.archive {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.archive .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.archive h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #E0CEAC; /* Light beige from palette */
+}
+
+.archive-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.archive-links a {
+    background-color: rgba(28, 33, 27, 0.8); /* Dark black from palette with transparency */
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: #F5F4E7; /* Cream white from palette */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(245, 244, 231, 0.2); /* Cream white from palette with transparency */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.archive-links a:hover {
+    background-color: #7C6447; /* Dark brown from palette */
+    color: #F5F4E7; /* Cream white from palette */
+    border-color: #7C6447; /* Dark brown from palette */
+}
+
+/* Newsletter */
+.newsletter {
+    background-color: #E0CEAC; /* Light beige from palette */
+    padding: 60px 20px; /* Padding para el full-bleed */
+    width: 100%;
+}
+
+.newsletter-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.newsletter-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #1C211B; /* Dark black from palette */
+    font-weight: 800;
+}
+
+.newsletter-content p {
+    color: #1C211B; /* Dark black from palette */
+    margin-bottom: 30px;
+}
+
+.newsletter-content form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto 15px;
+}
+
+.newsletter-content input {
+    flex-grow: 1;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(28, 33, 27, 0.2); /* Dark black from palette with transparency */
+    background-color: rgba(245, 244, 231, 0.5); /* Cream white from palette with transparency */
+    color: #1C211B; /* Dark black from palette */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.newsletter-content input::placeholder {
+    color: #7C6447; /* Dark brown from palette */
+}
+
+.newsletter-content .btn {
+    padding: 15px 30px;
+    border-radius: 10px;
+}
+
+.spam-notice {
+    font-size: 0.8rem;
+    color: #7C6447; /* Dark brown from palette */
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+    .featured-post {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+    .featured-post-content h2 {
+        font-size: 2rem;
+    }
+}
+

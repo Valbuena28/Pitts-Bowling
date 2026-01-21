@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/pitss.jpg" type="image/x-icon">
+  <title>Mi Cuenta | Pitts Bowling</title>
+  <link rel="stylesheet" href="css/styleLogin.css">
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <div style="padding: 20px; position:absolute; top:0; left:0;">
+      <a href="index.html" style="color: #E0CEAC; text-decoration: none; font-weight: bold;">
+          <i class="fas fa-arrow-left"></i> Volver al Inicio
+      </a>
+  </div>
+
+  <div class="profile-layout">
+      <aside class="profile-sidebar">
+          <div class="profile-avatar-big" id="avatarInitial">U</div>
+          <h2 class="profile-name" id="displayUsername">Cargando...</h2>
+          <p class="profile-email" id="displayEmail">...</p>
+          
+          <div class="profile-menu">
+              <button class="active" id="btn-personal">
+                  <i class="fas fa-user-edit"></i> Datos Personales
+              </button>
+              
+              <button id="btn-security">
+                  <i class="fas fa-shield-alt"></i> Seguridad
+              </button>
+              
+              <button class="btn-danger" id="logoutBtn">
+                  <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+              </button>
+          </div>
+      </aside>
+
+      <main class="profile-content">
+          
+          <div id="section-personal">
+              <h3 class="section-title"><i class="fas fa-id-card"></i> Información Personal</h3>
+              <form id="form-info">
+                  <div class="form-grid">
+                      <div class="form-group">
+                          <label>Nombre</label>
+                          <input type="text" id="inputName" placeholder="Tu nombre">
+                      </div>
+                      <div class="form-group">
+                          <label>Apellido</label>
+                          <input type="text" id="inputLastname" placeholder="Tu apellido">
+                      </div>
+                      <div class="form-group full-width">
+                          <label>Nombre de Usuario (Login)</label>
+                          <input type="text" id="inputUsername" placeholder="Usuario único">
+                      </div>
+                      <div class="form-group full-width">
+                          <label>Correo Electrónico</label>
+                          <input type="email" id="inputEmail" disabled style="opacity: 0.6; cursor: not-allowed;" title="Contacta a soporte para cambiar tu email">
+                          <small style="color:#aaa; font-size:0.8em;">El correo no se puede cambiar directamente por seguridad.</small>
+                      </div>
+                  </div>
+                  <button type="submit" id="btnUpdateInfo">
+                      <i class="fas fa-save"></i> Guardar Cambios
+                  </button>
+              </form>
+          </div>
+
+          <div id="section-security" style="display: none;">
+              <h3 class="section-title"><i class="fas fa-lock"></i> Cambiar Contraseña</h3>
+              <form id="form-password">
+                  <div class="form-group">
+                      <label>Contraseña Actual</label>
+                      <input type="password" id="currentPassword" placeholder="********">
+                  </div>
+                  <div class="form-group">
+                      <label>Nueva Contraseña</label>
+                      <input type="password" id="newPassword" placeholder="Mínimo 8 caractéres, Mayúscula y Número">
+                  </div>
+                  <div class="form-group">
+                      <label>Confirmar Nueva Contraseña</label>
+                      <input type="password" id="confirmNewPassword" placeholder="Repite la nueva contraseña">
+                  </div>
+                  <button type="submit" id="btnUpdatePass">
+                      <i class="fas fa-key"></i> Actualizar Contraseña
+                  </button>
+              </form>
+          </div>
+
+      </main>
+  </div>
+
+  <div id="alertModal" class="modal">
+      <div class="modal-box">
+          <h2 id="alertTitle">Mensaje</h2>
+          <p id="alertMessage" class="mensaje">Texto del mensaje</p>
+          <button id="btn-close-alert" class="session-modal-btn">Aceptar</button>
+      </div>
+  </div>
+
+  <script src="js/general.js"></script>
+  <script src="js/perfil.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+/* Reset */
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.tab-button {
+  background: #ddd;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.tab-button.active {
+  background: #2563eb;
+  color: white;
+}
+
+.tab-button:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Forms */
+form {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input, textarea, select, button {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+thead {
+  background: #2563eb;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+img {
+  border-radius: 4px;
+}
+
+/* === VISOR DE IMÁGENES (LIGHTBOX) === */
+#lightbox-overlay {
+  position: fixed;
+  z-index: 10005; /* Encima de todo (los modales suelen tener 9999) */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Fondo negro casi opaco */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s;
+}
+
+#lightbox-overlay.hidden {
+  display: none;
+}
+
+#lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transform: scale(0.8);
+  animation: zoomIn 0.3s forwards;
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#lightbox-close:hover {
+  color: #ccc;
+}
+
+/* Animaciones */
+@keyframes zoomIn {
+  to { transform: scale(1); }
+}
+
+/* Efecto hover en las imágenes pequeñas */
+.zoomable-image:hover {
+  opacity: 0.8;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* admin.css */
+
+/* Estilo para las burbujas de notificación en los tabs del Admin */
+.admin-tab-badge {
+    /* Mismo estilo de badge de notificaciones */
+    background-color: red; 
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 25px; /* Asegura un buen tamaño para 9+ */
+    height: 25px;
+    box-sizing: border-box;
+}
+
+.admin-tab-badge.hidden {
+    display: none;
+}
+
+/* Ajuste para que el botón de tab se vea mejor con el badge */
+.tabs .tab-button {
+    display: flex; /* Para alinear el texto y el badge */
+    align-items: center;
+}
+

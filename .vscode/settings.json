@@ -1,0 +1,6 @@
+{
+    "jetbrainsAI.chat.collectExplorationResults": true,
+    "jetbrainsAI.chat.useCodeSnippetsSoftWrap": true,
+    "aiCode.enableCheckpoints": false,
+    "codium.codeCompletion.enable": true
+}

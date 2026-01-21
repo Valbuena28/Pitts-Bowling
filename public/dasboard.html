@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/pitss.jpg" type="image/x-icon">
+    <title>Mi Dashboard - Pitts Bowling</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/dasboard.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+</head>
+<body>
+
+<div class="dashboard-container">
+    <aside class="dashboard-sidebar">
+        <div class="user-profile-summary">
+            <div class="user-avatar-large" id="dash-user-initial">U</div>
+            <h3 id="dash-user-name">Cargando...</h3>
+        </div>
+
+        <ul class="nav-tabs">
+            <li class="nav-tab-item active" data-target="tab-reservas">
+                <i class="fa-solid fa-calendar-check"></i> Mis Reservas
+            </li>
+            <li class="nav-tab-item" data-target="tab-pedidos">
+                <i class="fa-solid fa-utensils"></i> Mis Pedidos
+            </li>
+            <li class="nav-tab-item" data-target="tab-facturas">
+                <i class="fa-solid fa-file-invoice-dollar"></i> Mis Facturas
+            </li>
+            
+            <li class="nav-tab-item" data-target="tab-nuevo-paquete">
+                <i class="fa-solid fa-box-open"></i> Paquetes Disponibles
+            </li>
+
+            <div style="flex-grow: 1;"></div>
+
+            <a href="../index.html" class="nav-link-item" style="text-decoration: none;">
+                <li style="margin-bottom: 10px; border: 1px solid var(--primary-color);">
+                    <i class="fa-solid fa-house"></i> Volver a Inicio
+                </li>
+            </a>
+
+            <li class="nav-tab-item" id="dash-logout-btn" style="color: #ff6b6b; border: 1px solid rgba(255, 107, 107, 0.2);">
+                <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+            </li>
+        </ul>
+    </aside>
+
+    <main class="dashboard-content">
+        
+        <section id="tab-reservas" class="tab-pane active">
+            <h2>🎳 Mis Reservas de Pistas</h2>
+            <div id="reservations-loading">Cargando reservas...</div>
+            <div id="reservations-container" class="hidden">
+                </div>
+        </section>
+
+        <section id="tab-pedidos" class="tab-pane">
+            <h2>🍔 Mis Pedidos de Comida</h2>
+             <div id="orders-loading">Cargando pedidos...</div>
+             <div id="orders-container" class="hidden">
+            </div>
+        </section>
+
+        <section id="tab-facturas" class="tab-pane">
+            <h2>🧾 Historial de Facturas (Todo)</h2>
+            <div id="invoices-loading">Cargando facturas...</div>
+            <div id="invoices-container" class="hidden">
+                 </div>
+        </section>
+
+         <section id="tab-nuevo-paquete" class="tab-pane">
+            <h2>🎉 Paquetes Disponibles</h2>
+            <p>Selecciona un paquete para realizar una nueva reserva.</p>
+             <div id="packages-loading">Cargando paquetes...</div>
+             <div id="available-packages-container" class="available-packages-grid hidden">
+                 </div>
+        </section>
+
+    </main>
+</div>
+
+<script src="js/general.js"></script> 
+<script src="js/dasboard.js"></script>
+
+</body>
+</html>

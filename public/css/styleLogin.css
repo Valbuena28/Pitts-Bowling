@@ -1,0 +1,441 @@
+/* === Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* === Fondo general === */
+body {
+  background: linear-gradient(135deg, #0C0C0C, #1C211B);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #F5F4E7;
+}
+
+/* === Contenedor principal (login y 2FA) === */
+.container, #twoFactorSection {
+  background: rgba(28, 33, 27, 0.9);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 50px 40px;
+  width: 450px;
+  text-align: center;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.8s ease-in-out;
+  position: relative;
+}
+
+/* === Logo espacio === */
+.logo {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  background-color: #0C0C0C; /* placeholder */
+  border-radius: 50%;
+  border: 2px solid #7C6447;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7C6447;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+/* === Títulos === */
+h2, h3 {
+  margin-bottom: 25px;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #E0CEAC;
+  letter-spacing: 1px;
+}
+
+/* === Inputs generales === */
+input[type="text"], input[type="password"], input[type="email"] {
+  width: 100%;
+  padding: 14px 18px;
+  margin: 12px 0;
+  border: 1px solid #E0CEAC;
+  border-radius: 12px;
+  background: #0C0C0C;
+  color: #F5F4E7;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  background: #1C211B;
+  border: 1px solid #E0CEAC;
+  box-shadow: 0 0 10px rgba(224, 206, 172, 0.6);
+}
+
+/* === Botones === */
+button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(135deg, #E0CEAC, #7C6447);
+  color: #0C0C0C;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(224, 206, 172, 0.6);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* === Spinner dentro de botones === */
+.spinner {
+  border: 3px solid rgba(245, 244, 231, 0.3);
+  border-top: 3px solid #F5F4E7;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* === Mensajes === */
+.mensaje, .mensaje2FA {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  color: #E0CEAC;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+/* === Inputs del verificador 2FA === */
+.code-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.code-inputs .code {
+  width: 55px;
+  height: 65px;
+  text-align: center;
+  font-size: 1.6rem;
+  border-radius: 12px;
+  border: 2px solid #7C6447;
+  background: #0C0C0C;
+  color: #F5F4E7;
+  transition: 0.3s;
+}
+
+.code-inputs .code:focus {
+  border-color: #E0CEAC;
+  box-shadow: 0 0 12px rgba(224, 206, 172, 0.7);
+  outline: none;
+}
+
+/* === Animaciones === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ocultamos el checkbox nativo */
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+/* Estilo del contenedor visual */
+.custom-checkbox span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #0C0C0C;
+  border: 1px solid #E0CEAC;
+  border-radius: 6px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Estilo cuando está marcado */
+.custom-checkbox input[type="checkbox"]:checked + span {
+  background: linear-gradient(135deg, #E0CEAC, #7C6447); /* Color de fondo cuando está marcado */
+}
+
+/* Flecha o palomita */
+.custom-checkbox input[type="checkbox"]:checked + span::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 1px;
+  width: 6px;
+  height: 12px;
+  border: solid #0C0C0C;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.links-row { display:flex; justify-content:space-between; margin-top:10px; font-size:0.95rem; }
+.links-row a { color: #E0CEAC; text-decoration: none; opacity:0.9; }
+.links-row a:hover { text-decoration: underline; opacity:1; }
+
+.g-recaptcha{
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  
+  }
+
+  /* === Botón de Google === */
+
+/* Botón Google ahora con estilo de botón principal */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* ocupa todo el ancho como el botón Entrar */
+  margin-top: 18px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(135deg, #E0CEAC, #7C6447);
+  color: #0C0C0C;
+  transition: all 0.3s ease;
+  text-decoration: none; /* quitar subrayado del link */
+}
+
+.google-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(224, 206, 172, 0.8);
+}
+
+.google-btn:active {
+  background-color: #7C6447;
+  transform: translateY(0);
+}
+
+/* Ícono de Google */
+.google-logo {
+  height: 24px;
+  width: auto;
+  margin-right: 12px;
+}
+
+
+/* === Posición del checkbox debajo a la derecha === */
+.checkbox-wrapper {
+  display: flex;
+  justify-content: flex-end; /* lo empuja a la derecha */
+  margin-top: -4px;          /* lo acerca al input */
+  margin-bottom: 12px;       /* espacio con lo siguiente */
+}
+
+/* Aseguramos que el span del checkbox no se agrande raro */
+.checkbox-wrapper .custom-checkbox span {
+  margin: 0;
+}
+
+/* CSS PARA EL PERFIL.HTML*/
+
+/* === Modal unificado con estilo del container === */
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0C0C0C, #1C211B);
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Caja interna del modal reusa estilos de .container */
+.modal-box {
+  max-width: 450px;
+  width: 90%;
+  padding: 40px 30px;
+  text-align: center;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Ajustar logo dentro del modal */
+.modal-box .logo {
+  margin-bottom: 20px;
+}
+
+/* Texto dentro del modal */
+.modal-box h2 {
+  color: #E0CEAC;
+  margin-bottom: 15px;
+}
+
+.modal-box .mensaje {
+  margin: 10px 0 20px;
+  font-size: 1rem;
+  color: #F5F4E7;
+  opacity: 0.9;
+}
+
+
+
+/* ============================== */
+/* === Dashboard (Admin) === */
+/* ============================== */
+
+.admin-body {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.admin-container {
+  background: rgba(28, 33, 27, 0.9);
+  border-radius: 20px;
+  padding: 40px 50px;
+  width: 90%;
+  max-width: 1000px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.admin-container h1 {
+  text-align: center;
+  color: #E0CEAC;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+/* === Navegación === */
+.admin-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.admin-nav button {
+  width: auto;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #E0CEAC, #7C6447);
+  color: #0C0C0C;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.admin-nav button.active {
+  box-shadow: 0 0 10px rgba(224, 206, 172, 0.8);
+  transform: scale(1.05);
+}
+
+/* === Tabs === */
+.tab {
+  display: none;
+}
+.tab.active {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* === Formularios === */
+.package-form input,
+.package-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #E0CEAC;
+  background: #0C0C0C;
+  color: #F5F4E7;
+  font-size: 0.95rem;
+}
+
+.package-form textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* === Tablas === */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 10px;
+  border-bottom: 1px solid #7C6447;
+  text-align: center;
+}
+
+.admin-table th {
+  color: #E0CEAC;
+  font-weight: 600;
+}
+
+.admin-table tr:hover {
+  background: rgba(124, 100, 71, 0.1);
+}
+
+/* === Botones de acción === */
+.action-btn {
+  background: none;
+  border: 1px solid #E0CEAC;
+  border-radius: 8px;
+  color: #E0CEAC;
+  padding: 5px 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.action-btn:hover {
+  background: #E0CEAC;
+  color: #0C0C0C;
+}
+
+/* === Logo del panel === */
+.logo {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  background-color: #0C0C0C;
+  border-radius: 50%;
+  border: 2px solid #7C6447;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7C6447;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}

@@ -1,0 +1,5 @@
+--- Diagnosis Start ---
+DB Connection: Success
+Columns found: id, name, last_name, usuario, password, email_verified, email, failed_attempts, locked_until, block_count, permanently_blocked, current_session, role
+All security columns present.
+--- Diagnosis End ---

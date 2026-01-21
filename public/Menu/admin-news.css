@@ -1,0 +1,236 @@
+/* admin-news.css - Styles for News Admin Interface */
+
+/* Container */
+#posts {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#posts h2 {
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+/* Form Styles */
+#postForm {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 2.5rem;
+}
+
+#postForm label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 0.5rem;
+}
+
+#postForm input[type="text"],
+#postForm input[type="url"],
+#postForm input[type="datetime-local"],
+#postForm select,
+#postForm textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    color: #334155;
+    font-family: inherit;
+}
+
+#postForm input:focus,
+#postForm select:focus,
+#postForm textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* File Upload Modernization */
+.file-upload-wrapper {
+    position: relative;
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    background: #fff;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.file-upload-wrapper:hover {
+    border-color: #3b82f6;
+    background: #eff6ff;
+}
+
+/* El input original se extiende sobre todo el wrapper y se hace invisible */
+.file-upload-wrapper input[type="file"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Placeholder visual */
+.upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #94a3b8;
+    pointer-events: none;
+    /* Que el click pase al input */
+    padding: 20px;
+}
+
+/* Cuando ya hay archivo, ocultamos el placeholder o lo hacemos pequeño */
+.file-upload-wrapper.has-file .upload-placeholder,
+.file-upload-wrapper.has-files .upload-placeholder {
+    display: none;
+}
+
+/* Previews */
+#post-main-image-preview,
+#post-gallery-preview {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    z-index: 5;
+    /* Encima del input para poder interactuar si agregamos botones de borrar */
+    pointer-events: none;
+    /* Por ahora, para que se pueda seguir clickeando 'añadir' en huecos */
+}
+
+/* Allow clicks to pass through preview container but NOT content if we had delete buttons */
+/* For now since click anywhere triggers input, it's fine */
+
+#post-main-image-preview img,
+#post-main-image-preview video {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-preview-item {
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background: #000;
+}
+
+.gallery-preview-item img,
+.gallery-preview-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Table Styles */
+#posts table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+#posts table thead {
+    background-color: #f8fafc;
+}
+
+#posts table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #475569;
+    border-bottom: 1px solid #e2e8f0;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+#posts table td {
+    padding: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+    vertical-align: middle;
+}
+
+#posts table tr:last-child td {
+    border-bottom: none;
+}
+
+#posts table tr:hover td {
+    background-color: #f8fafc;
+}
+
+/* Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    line-height: 1;
+}
+
+.badge-featured {
+    background-color: #fffbeb;
+    color: #d97706;
+    border: 1px solid #fcd34d;
+}
+
+.badge-category {
+    background-color: #e0f2fe;
+    color: #0284c7;
+    border: 1px solid #bae6fd;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+}

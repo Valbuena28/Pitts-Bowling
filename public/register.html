@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="icon" href="images/pitss.jpg" type="image/x-icon">
+  <title>Registrarse - Pitts Bowling</title>
+  <link rel="stylesheet" href="css/styleLogin.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo"><img src="images/pitss.jpg" alt=""></div>
+    <h2>Crear cuenta</h2>
+
+    <form id="registerForm" autocomplete="off">
+    <input type="text" id="r_name" placeholder="Nombre" required>
+    <input type="text" id="r_last_name" placeholder="Apellido" required>
+    <input type="text" id="r_usuario" placeholder="Usuario" required>
+    <input type="email" id="r_email" placeholder="Correo electrónico" required>
+    <input type="password" id="r_password" placeholder="Contraseña" required>
+    <input type="password" id="r_password2" placeholder="Confirmar contraseña" required>
+    <label class="custom-checkbox">
+        <input type="checkbox" id="view" class="view">
+        <span></span>
+    </label>
+    <button id="registerBtn" type="submit">Crear cuenta</button>
+    </form>
+
+    <div class="links-row">
+      <a href="login.html" style="color:#E0CEAC;">Volver al login</a>
+    </div>
+
+    <p id="registerMsg" class="mensaje"></p>
+  </div>
+
+  <script src="js/register.js"></script>
+</body>
+</html>

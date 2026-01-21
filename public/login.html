@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Seguro</title>
+  <link rel="icon" href="images/pitss.jpg" type="image/x-icon">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <link rel="stylesheet" href="css/styleLogin.css">
+</head>
+<body>
+<!-- LOGIN -->
+<div class="container" id="container">
+  <div class="logo">
+   <img src="images/pitss.jpg" alt="">
+  </div>
+  <h2>Iniciar Sesión</h2>
+  <form id="loginForm">
+    <input type="text" id="usuario" placeholder="Usuario" required>
+    <input type="password" id="password" placeholder="Contraseña" required>
+
+    <!-- Checkbox debajo del input, alineado a la derecha -->
+    <div class="checkbox-wrapper">
+      <label class="custom-checkbox">
+        <input type="checkbox" id="view" class="view">
+        <span></span>
+      </label>
+    </div>
+    
+    <button id="loginBtn" type="submit">Entrar</button>
+  </form>
+
+  <!-- Links -->
+  <div class="links-row">
+    <a href="register.html">Registrarse</a>
+    <a href="forjot.html">Olvidé mi contraseña</a>
+  </div>
+  
+  <p id="mensaje" class="mensaje"></p>
+
+  <!-- Recaptcha debajo de los links -->
+  <div class="g-recaptcha" data-sitekey="6Le33MwrAAAAAOZ6jVuEEc41myQJN8vApEu1rQvU" data-theme="dark"></div>
+
+  <!-- Botón Google debajo del recaptcha -->
+  <a class="google-btn" href="/auth/google" title="Inicia sesión o registrate con Google">
+    <img src="images/Google__G__logo.svg.png" alt="Google Logo" class="google-logo">
+    <span>Inicia sesión o registrate con Google</span>
+  </a>
+</div>
+
+<!-- 2FA -->
+<div id="twoFactorSection" style="display:none;">
+  <div class="logo">
+    <img src="images/pitss.jpg" alt="">
+  </div>
+  <h3>Verificación en dos pasos</h3>
+  <p>Revisa tu correo e introduce el codigo enviado</p>
+  <div class="code-inputs">
+    <input type="text" maxlength="1" class="code" />
+    <input type="text" maxlength="1" class="code" />
+    <input type="text" maxlength="1" class="code" />
+    <input type="text" maxlength="1" class="code" />
+    <input type="text" maxlength="1" class="code" />
+    <input type="text" maxlength="1" class="code" />
+  </div>
+  <button id="resendBtn" type="button">Reenviar código</button>
+  <p id="resendMsg" class="mensaje2FA"></p>
+  <div id="spinner2FA" class="spinner" style="display:none;"></div>
+  <p id="mensaje2FA" class="mensaje2FA"></p>
+</div>
+
+<script src="js/login.js"></script>
+<script src="js/general.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="images/pitss.jpg" type="image/x-icon">
+  <title>Reestablecer contraseña - Pitts Bowling</title>
+  <link rel="stylesheet" href="css/styleLogin.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo"><img src="images/pitss.jpg" alt=""></div>
+    <h2>Reestablecer contraseña</h2>
+
+    <form id="resetForm">
+      <input type="password" id="newPassword" placeholder="Nueva contraseña" required>
+      <input type="password" id="newPassword2" placeholder="Confirmar contraseña" required>
+      <div class="checkbox-wrapper">
+      <label class="custom-checkbox">
+        <input type="checkbox" id="view" class="view">
+        <span></span>
+      </label>
+    </div>
+      <button id="resetBtn" type="submit">Cambiar contraseña</button>
+    </form>
+
+    <p id="resetMsg" class="mensaje"></p>
+    <div class="links-row"><a href="login.html">Volver al login</a></div>
+  </div>
+
+  <script src="js/reset.js"></script>
+</body>
+</html>
